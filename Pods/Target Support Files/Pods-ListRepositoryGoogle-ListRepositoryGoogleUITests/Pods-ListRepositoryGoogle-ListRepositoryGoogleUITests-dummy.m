@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_ListRepositoryGoogle_ListRepositoryGoogleUITests : NSObject
+@end
+@implementation PodsDummy_Pods_ListRepositoryGoogle_ListRepositoryGoogleUITests
+@end

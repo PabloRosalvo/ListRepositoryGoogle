@@ -1,0 +1,6 @@
+framework module Pods_ListRepositoryGoogle {
+  umbrella header "Pods-ListRepositoryGoogle-umbrella.h"
+
+  export *
+  module * { export * }
+}
