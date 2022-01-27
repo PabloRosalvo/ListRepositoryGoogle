@@ -14,8 +14,9 @@ class GoogleReposytoryCoordinator {
         presentingViewController?.pushViewController(controller, animated: true)
     }
 
-    func showGithubDetails() {
-        let controller = ListDetailsRepositoryViewController()
+    func showGithubDetails(_ model: DetailsGitHubModel) {
+        let viewModel = ListGithubDetailsViewModel(model: model)
+        let controller = ListDetailsRepositoryViewController(viewModel: viewModel)
         presentingViewController?.pushViewController(controller, animated: true)
     }
 }

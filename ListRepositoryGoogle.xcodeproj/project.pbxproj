@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30F7F0A627A2523B003C965C /* ListGithubDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F7F0A527A2523B003C965C /* ListGithubDetailsViewModel.swift */; };
 		30F910C8279F8CDB004355B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F910C7279F8CDB004355B6 /* AppDelegate.swift */; };
 		30F910D2279F8CDB004355B6 /* ListRepositoryGoogle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30F910D0279F8CDB004355B6 /* ListRepositoryGoogle.xcdatamodeld */; };
 		30F910D4279F8CDD004355B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F910D3279F8CDD004355B6 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		032E31199999397D1BDB3967 /* Pods_ListRepositoryGoogle_ListRepositoryGoogleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListRepositoryGoogle_ListRepositoryGoogleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F92CA4AC014A212C94A2EA0 /* Pods-ListRepositoryGoogle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListRepositoryGoogle.debug.xcconfig"; path = "Target Support Files/Pods-ListRepositoryGoogle/Pods-ListRepositoryGoogle.debug.xcconfig"; sourceTree = "<group>"; };
+		30F7F0A527A2523B003C965C /* ListGithubDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListGithubDetailsViewModel.swift; sourceTree = "<group>"; };
 		30F910C4279F8CDB004355B6 /* ListRepositoryGoogle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListRepositoryGoogle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F910C7279F8CDB004355B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F910D1279F8CDB004355B6 /* ListRepositoryGoogle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListRepositoryGoogle.xcdatamodel; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				30F911C8279F9B2C004355B6 /* ListRepositoryViewModel.swift */,
+				30F7F0A527A2523B003C965C /* ListGithubDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				30F9111E279F8D9E004355B6 /* ListRepositoryGoogleCollectionViewCell.swift in Sources */,
 				30F91102279F8D68004355B6 /* ConnetionManager.swift in Sources */,
 				30F91103279F8D68004355B6 /* ConnectionErrorManager.swift in Sources */,
+				30F7F0A627A2523B003C965C /* ListGithubDetailsViewModel.swift in Sources */,
 				30F9136627A10F93004355B6 /* ListDetailsRepositoryViewController.swift in Sources */,
 				30F9110F279F8D79004355B6 /* ErrorViewGeneric.swift in Sources */,
 				30F9136527A10F93004355B6 /* ListDetailsRepositoryView.swift in Sources */,

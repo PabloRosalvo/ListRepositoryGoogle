@@ -1,27 +1,3 @@
-//                                              
-//              .,                                       
-//             .****.                                    
-//            ,********                                  
-//           .***   ,**//.               .(%%%/          
-//          .***      .//((*         ,#%%%%%&%           
-//         .***          /((#/   *####%%(*%%%            
-//        .***              (///(((/    ,%%%             
-//       ,***           ,****//#%%%    *%%%              
-//      .***        *******.    /%%%%..%%%               
-//     ,***    .******,           .%%%%&%                
-//    .*** ,******.                  %%%.                
-//   ,********                                           
-//   ****,                    
-//
-//  Banco Next - faz acontecer.
-//	
-//  ViewConfiguration.swift
-//  Next-Bradesco
-//
-//  Created by Pablo Rosalvo on 06/07/21.
-//  Copyright © 2021 Banco Bradesco S.A. - Todos os direitos reservados 
-//
-
 import Foundation
 
 public protocol ViewConfiguration: AnyObject {

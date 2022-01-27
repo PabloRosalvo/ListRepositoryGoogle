@@ -4,11 +4,12 @@
 
 import UIKit
 
- 
 class ListDetailsRepositoryViewController: UIViewController {
         
+    let viewModel: ListGithubDetailsViewModel
+    
     private lazy var contentView: ListDetailsRepositoryView = {
-        let view = ListDetailsRepositoryView()
+        let view = ListDetailsRepositoryView(viewModel: viewModel)
         return view
     }()
         
@@ -25,7 +26,8 @@ class ListDetailsRepositoryViewController: UIViewController {
         self.view = contentView
     }
     
-    init() {
+    init(viewModel: ListGithubDetailsViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 

@@ -13,7 +13,6 @@ final class ListRepositoryGoogleCollectionViewCell: UICollectionViewCell {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.image = #imageLiteral(resourceName: "imageGithub")
         iv.layer.cornerRadius = 5
         return iv
     }()

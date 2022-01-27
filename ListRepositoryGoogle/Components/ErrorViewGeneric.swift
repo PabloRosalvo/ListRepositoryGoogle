@@ -104,7 +104,7 @@ extension ErrorViewGeneric {
     }
     
     func configureViews() {
-        imageView.image = #imageLiteral(resourceName: "splashScreen")
+        imageView.image = #imageLiteral(resourceName: "imageGithub")
         titleLabel.text = "Ops, ocorreu um erro"
         subtitleLabel.text = "Verifique o seu sinal de internet :)"
         self.backgroundColor = .systemGroupedBackground

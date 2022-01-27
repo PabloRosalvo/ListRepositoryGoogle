@@ -27,8 +27,8 @@ class ConnectionManager {
                 case .success(let response) :
                     let decoder = JSONDecoder()
                     do {
-                        let jsonData = try! JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
-                        let data = try decoder.decode(T.self, from: jsonData)
+                        let jsonData = try? JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+                        let data = try decoder.decode(T.self, from: jsonData ?? Data())
                         completionHandler(statusCode, data)
                     } catch let error {
                         print(error)

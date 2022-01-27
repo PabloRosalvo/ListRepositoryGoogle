@@ -3,8 +3,8 @@
 
 import UIKit
 
-final class ListRepositoryGoogleViewController: UIViewController {
-
+final class ListRepositoryGoogleViewController: UIViewController, UISearchBarDelegate {
+   
     private let viewModel: ListRepositoryViewModel
     private var refreshControl = UIRefreshControl()
     private var coordinator: GoogleReposytoryCoordinator
@@ -17,6 +17,7 @@ final class ListRepositoryGoogleViewController: UIViewController {
     
     private lazy var dataSource: ListRepositoryDataSource = {
         let source = ListRepositoryDataSource(delegate: self)
+        source.searchBar.delegate = self
         return source
     }()
     
@@ -24,6 +25,7 @@ final class ListRepositoryGoogleViewController: UIViewController {
         super.viewDidLoad()
         self.fetchDetails()
         refreshToControl()
+    
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(back))
         self.view.backgroundColor = .white
     }
@@ -31,7 +33,7 @@ final class ListRepositoryGoogleViewController: UIViewController {
     override func loadView() {
         self.view = contentView
     }
-
+    
     init(viewModel: ListRepositoryViewModel, coordinator: GoogleReposytoryCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
@@ -57,6 +59,15 @@ final class ListRepositoryGoogleViewController: UIViewController {
         fetchDetails()
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        viewModel.dataList = searchText.isEmpty ? viewModel.modelList : viewModel.modelList?.filter { model -> Bool in
+            // If dataItem matches the searchText, return true to include it
+            return model.name?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        self.contentView.collectionView.reloadData()
+    }
+    
     private func fetchDetails() {
         contentView.showActivityIndicator()
         self.viewModel.fetchDetails { [weak self] success in
@@ -71,7 +82,7 @@ final class ListRepositoryGoogleViewController: UIViewController {
             }
         }
     }
-
+    
     private func handleError() {
         self.ds.showError {
             self.fetchDetails()
@@ -81,8 +92,8 @@ final class ListRepositoryGoogleViewController: UIViewController {
 }
 
 extension ListRepositoryGoogleViewController: ListDataSourceDelegate {
-    func seletectIndexPathRow() {
-        coordinator.showGithubDetails()
+    func seletectIndexPathRow(_ model: DetailsGitHubModel) {
+        coordinator.showGithubDetails(model)
     }
     
 }

@@ -20,12 +20,15 @@ final class ListRepositoryViewModel {
         return model
     }
     
+    var dataList: [RepositorieModel]?
+    
     func fetchDetails(_ completion: @escaping (Bool) -> Void) {
         api.fetch { statusCode, model in
             guard let statusCode = statusCode else { return }
             if ConnectionErrorManager.isSuccessfulStatusCode(statusCode: statusCode) {
                 guard let model = model else { return }
                 self.model = model
+                self.dataList = model
                 completion(true)
             } else {
                 completion(false)

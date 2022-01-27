@@ -1,9 +1,7 @@
 //
 //  WelcomeViewController.swift
 
-
 import UIKit
-
  
 class WelcomeViewController: UIViewController, WelcomeDelegate {
     

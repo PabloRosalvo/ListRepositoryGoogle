@@ -4,28 +4,38 @@
 import UIKit
 import SnapKit
 
-
 final class ListDetailsRepositoryView: UIView, ViewConfiguration {
+    
+    let viewModel: ListGithubDetailsViewModel
     
     private lazy var imageView: UIImageView = {
         let imageview = UIImageView()
-        imageview.image = UIImage(named: "imageGithub")
         imageview.layer.cornerRadius = 14
         imageview.contentMode = .scaleAspectFill
         return imageview
     }()
     
-    private lazy var label: UILabel = {
+    private lazy var nameRepositoryLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.text = "Repositórios públicos do Google, veja a lista clicando no botao abaixo. "
         label.textColor = .black
         label.numberOfLines = 0
-        label.textAlignment = .center
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private lazy var descriptionRepositoryLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.textAlignment = .left
         return label
     }()
 
-    override init(frame: CGRect = .zero) {
+
+    init(frame: CGRect = .zero, viewModel: ListGithubDetailsViewModel) {
+        self.viewModel = viewModel
         super.init(frame: frame)
         setupViews()
     }
@@ -37,11 +47,19 @@ final class ListDetailsRepositoryView: UIView, ViewConfiguration {
     
     func configureViews() {
         backgroundColor = .white
+        setupLayout()
+    }
+    
+    func setupLayout() {
+        self.imageView.kf.setImage(with: URL(string: viewModel.image))
+        nameRepositoryLabel.text = viewModel.name
+        descriptionRepositoryLabel.text = viewModel.setDescription()
     }
 
     func setupViewHierarchy() {
         addSubview(imageView)
-        addSubview(label)
+        addSubview(nameRepositoryLabel)
+        addSubview(descriptionRepositoryLabel)
     }
     
     func setupConstraints() {
@@ -52,8 +70,14 @@ final class ListDetailsRepositoryView: UIView, ViewConfiguration {
             make.width.equalTo(200)
         }
 
-        label.snp.makeConstraints { make in
+        nameRepositoryLabel.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(60)
+            make.leading.equalTo(snp.leading).offset(48)
+            make.trailing.equalTo(snp.trailing).offset(-48)
+        }
+        
+        descriptionRepositoryLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameRepositoryLabel.snp.bottom).offset(60)
             make.leading.equalTo(snp.leading).offset(48)
             make.trailing.equalTo(snp.trailing).offset(-48)
         }
