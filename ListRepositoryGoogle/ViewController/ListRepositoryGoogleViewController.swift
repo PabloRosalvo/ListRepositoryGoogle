@@ -60,7 +60,6 @@ final class ListRepositoryGoogleViewController: UIViewController, UISearchBarDel
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         viewModel.dataList = searchText.isEmpty ? viewModel.modelList : viewModel.modelList?.filter { model -> Bool in
             return model.name?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
