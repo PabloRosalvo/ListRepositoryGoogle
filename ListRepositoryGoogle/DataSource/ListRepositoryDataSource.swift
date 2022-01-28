@@ -54,7 +54,6 @@ final class ListRepositoryDataSource: NSObject, UISearchBarDelegate {
         didSet {
             collectionView?.register(ListRepositoryGoogleCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
             collectionView?.register(ListRepositoryGoogleCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerCellId")
-
         }
     }
   

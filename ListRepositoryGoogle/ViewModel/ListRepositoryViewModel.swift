@@ -28,6 +28,7 @@ final class ListRepositoryViewModel {
                 completion(error)
                 return
             }
+            self?.model = model
             self?.dataList = model
             completion(error)
         }

@@ -48,13 +48,13 @@ final class ListRepositoryApiSpec: QuickSpec {
 
 
 extension ListRepositoryApiSpec {
-    func fetchList(completion: @escaping (Int?, [RepositorieModel]?) -> Void) {
-        listRepositoryApiMock.fetch { statusCode, model in
-            guard let statusCode = statusCode else { return }
-            if statusCode == 200 {
-                completion(statusCode, model)
+    func fetchList(completion: @escaping ([RepositorieModel]?, RequestError?) -> Void) {
+        listRepositoryApiMock.fetch { model, error  in
+            guard error == nil else {
+                completion(model, error)
+                return
             }
-            completion(statusCode, model)
+            completion(nil, error)
         }
     }
 }

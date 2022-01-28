@@ -13,20 +13,20 @@ import Quick
 @testable import ListRepositoryGoogle
 
 final class ListRepositoryApiMock: ListRepositoryGoogleApiProtocol {
-    
+        
     var shouldReturn: Bool = false
 
     init(shouldReturn: Bool) {
         self.shouldReturn = shouldReturn
     }
 
-    func fetch(completion: @escaping (Int?, [RepositorieModel]?) -> Void) {
+    func fetch(completion: @escaping ([RepositorieModel]?, RequestError?) -> Void) {
         if shouldReturn {
             let model: [RepositorieModel]? = JSONHelper.getObjectFrom(json: "RepositorieModel", type: [RepositorieModel]?.self) ?? [RepositorieModel]()
 
-            completion(200, model)
+            completion(model, nil )
         } else {
-            completion(500, nil)
+            completion(nil, RequestError(reason: "Erro API" , statusCode: 500, data: nil))
         }
     }
 
