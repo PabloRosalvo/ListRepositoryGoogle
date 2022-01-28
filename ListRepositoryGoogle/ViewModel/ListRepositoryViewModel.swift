@@ -22,17 +22,14 @@ final class ListRepositoryViewModel {
     
     var dataList: [RepositorieModel]?
     
-    func fetchDetails(_ completion: @escaping (Bool) -> Void) {
-        api.fetch { statusCode, model in
-            guard let statusCode = statusCode else { return }
-            if ConnectionErrorManager.isSuccessfulStatusCode(statusCode: statusCode) {
-                guard let model = model else { return }
-                self.model = model
-                self.dataList = model
-                completion(true)
-            } else {
-                completion(false)
+    func fetchDetails(_ completion: @escaping (RequestError?) -> Void) {
+        api.fetch { [weak self] model, error in
+            guard error == nil else {
+                completion(error)
+                return
             }
+            self?.dataList = model
+            completion(error)
         }
     }
     

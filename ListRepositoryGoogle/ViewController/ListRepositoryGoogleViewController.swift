@@ -4,7 +4,7 @@
 import UIKit
 
 final class ListRepositoryGoogleViewController: UIViewController, UISearchBarDelegate {
-   
+    
     private let viewModel: ListRepositoryViewModel
     private var refreshControl = UIRefreshControl()
     private var coordinator: GoogleReposytoryCoordinator
@@ -25,7 +25,7 @@ final class ListRepositoryGoogleViewController: UIViewController, UISearchBarDel
         super.viewDidLoad()
         self.fetchDetails()
         refreshToControl()
-    
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(back))
         self.view.backgroundColor = .white
     }
@@ -67,16 +67,18 @@ final class ListRepositoryGoogleViewController: UIViewController, UISearchBarDel
     }
     
     private func fetchDetails() {
-        contentView.showActivityIndicator()
-        self.viewModel.fetchDetails { [weak self] success in
-            guard let self = self else { return } 
-            self.contentView.hideActivityIndicator()
-            self.refreshControl.endRefreshing()
-            if success {
-                self.dataSource.setViewModel(viewModel: self.viewModel)
-                self.contentView.setDataSource(self.dataSource)
-            } else {
-                self.handleError()
+        self.contentView.showActivityIndicator()
+        self.viewModel.fetchDetails { [weak self] error in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.contentView.hideActivityIndicator()
+                self.refreshControl.endRefreshing()
+                if error == nil {
+                    self.dataSource.setViewModel(viewModel: self.viewModel)
+                    self.contentView.setDataSource(self.dataSource)
+                } else {
+                    self.handleError()
+                }
             }
         }
     }

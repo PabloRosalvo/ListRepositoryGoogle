@@ -9,7 +9,14 @@ import Foundation
 
 typealias DetailsGitHubModel = (name: String, image: String, description: String)
 
-final class ListGithubDetailsViewModel {
+
+protocol ListGithubDetailsViewModelProtocol {
+    var name: String { get }
+    var image: String { get }
+    func setDescription() -> String
+}
+
+final class ListGithubDetailsViewModel: ListGithubDetailsViewModelProtocol {
     
     private let model: DetailsGitHubModel
     

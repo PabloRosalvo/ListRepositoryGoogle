@@ -13,6 +13,10 @@ target 'ListRepositoryGoogle' do
   target 'ListRepositoryGoogleTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Nimble'
+    pod 'Nimble-Snapshots'
+    pod 'Quick'
+    
   end
 
   target 'ListRepositoryGoogleUITests' do
